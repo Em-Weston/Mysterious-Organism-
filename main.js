@@ -1,100 +1,109 @@
 // Returns a random DNA base
 const returnRandBase = () => {
-  const dnaBases = ['A', 'T', 'C', 'G'];
-  return dnaBases[Math.floor(Math.random() * 4)];
-};
-
+  const dnaBases = ['A', 'T', 'C', 'G']
+  return dnaBases[Math.floor(Math.random() * 4)] 
+}
 // Returns a random single stand of DNA containing 15 bases
 const mockUpStrand = () => {
-  const newStrand = [];
+  const newStrand = []
   for (let i = 0; i < 15; i++) {
-    newStrand.push(returnRandBase());
+    newStrand.push(returnRandBase())
   }
-  return newStrand;
-};
+  return newStrand
+}
 
 function pAequorFactory (number, arrBases) {
-  return {
-    specimenNum: number,
-    dna: arrBases,
-    mutate() {
-      let num = Math.floor(Math.random() * 15)
-  console.log('index num: ', num)
+   return {
+     specimenNum: number,
+     dna: arrBases,
+      mutate() {
+  let num = Math.floor(Math.random() * 15)
+  // console.log('index num: ', num)
 // grabbing that indexnum from the array
   let orgi = newObj.dna[num]
-  console.log('original: ', orgi)
-// calling the function to generate a new one
+  // console.log('original: ', orgi)
+// calling the function to generate a new letter
   let replacement = returnRandBase()
-  console.log('replacement: ', replacement)
-// adding validation 
+  // console.log('replacement: ', replacement)
+// adding validation twice.
   orgi === replacement ? replacement =      returnRandBase() : console.log('1st nothing to do: ',  replacement) ;
   orgi === replacement ? replacement =      returnRandBase() : console.log('2nd nothing to do: ',  replacement) ;
-  console.log('new replace: ', replacement)
+  // console.log('new replace: ', replacement)
   // // changing the old obj to the new obj. 
 newObj.dna[num] = replacement
 // console.log(newObj.dna[num])
 // console.log(replacement)
 return newObj.dna
-    },
-    compareDNA (array1, array2)  {
-        let baseCount = 0;
-         for(var i = 0; i < array1.length; i++){
-          //  console.log(array1[i])
-          //  console.log(array2[i])
-           if (array1[i] === array2[i]) {
-             baseCount++ 
-           } 
-           console.log(baseCount)
-         }
-         let finalValue = (baseCount / array1.length) * 100
-         return `Specimen ${newObj.specimenNum} and ${secondObj.specimenNum} have ${finalValue.toFixed()}% DNA in common.`
-    },
-    willLikelySurvive(arrayThis){
-      let count = 0;
-     for (let i = 0; i < arrayThis.length; i++){
-       let letter = arrayThis[i];
-       // console.log(letter)
-       // console.log(i, arrayOrThis[i])
-       if(arrayThis[i] === 'C' || arrayThis[i] === 'G') {
-         // console.log('We have a winner!')
-         count += 1 
-         // console.log(count)
-       } 
+     },
+     compareDNA(array1, array2)  {
+       let baseCount = 0;
+       for(var i = 0; i < array1.length; i++){
+        //  console.log(array1[i])
+        //  console.log(array2[i])
+         if (array1[i] === array2[i]) {
+           baseCount++ 
+         } 
+        //  console.log(baseCount)
        }
-       let finaltot = (count / 15) * 100;
-       finaltot = finaltot.toFixed()
-       // console.log(finaltot)
-       return finaltot >= 60 
-     }
+       let finalValue = (baseCount / array1.length) * 100
+       return `Specimen ${newObj.specimenNum} and ${secondObj.specimenNum} have ${finalValue.toFixed()}% DNA in common.`
+ },
+ willLikelySurvive(){
+   let count = 0;
+  for (let i = 0; i < this.dna.length; i++){
+    let letter = this.dna[i];
+    // console.log(letter)
+    // console.log(i, arrayOrThis[i])
+    if(this.dna[i] === 'C' || this.dna[i] === 'G') {
+      // console.log('We have a winner!')
+      count += 1 
+      // console.log(count)
+    } 
+    }
+    let finaltot = (count / 15) * 100;
+    finaltot = finaltot.toFixed()
+    // console.log(finaltot)
+    return finaltot >= 60 
   }
-};
+     }
+   }
+ 
 
 const newObj = pAequorFactory(1, mockUpStrand())
-console.log(newObj)
-console.log(newObj.willLikelySurvive(newObj.dna))
-
-// function compareDNA (array1, array2)  {
-//     let baseCount = 0;
-//      for(var i = 0; i < array1.length; i++){
-//       //  console.log(array1[i])
-//       //  console.log(array2[i])
-//        if (array1[i] === array2[i]) {
-//          baseCount++ 
-//        } 
-//        console.log(baseCount)
-//      }
-//      let finalValue = (baseCount / array1.length) * 100
-//      return `Specimen ${newObj.specimenNum} and ${secondObj.specimenNum} have ${finalValue.toFixed()}% DNA in common.`
-// }
-// console.log(compareDNA(newObj.dna, secondObj.dna))
+const secondObj = pAequorFactory(2, mockUpStrand())
+// console.log(newObj)
+// console.log(secondObj)
+// newObj.mutate()
+// console.log(newObj.compareDNA(newObj.dna, secondObj.dna)) 
+// console.log(newObj.willLikelySurvive(newObj.dna))
+console.log(newObj.willLikelySurvive())
 
 
-console.log(newObj.compareDNA(newObj.dna, secondObj.dna))
+let survivorDNA = []
+const myFunc = () => {
+// let survivorDNA = []
+// console.log(SurvivorDNA)
+for(let x = 0; x < 30; x++) {
+  // console.log(x)
+let newDNA = pAequorFactory(x, mockUpStrand())
+// console.log(newDNA)
+let yesOrNo = newDNA.willLikelySurvive()
+// console.log('Its a winner/loser: ', yesOrNo) 
+if (yesOrNo === true) {
+survivorDNA.push(newDNA)
+}
+// if (generating(generating.dna) === true) {
+//   survivorDNA.push(generating.dna)
+// }  
+}
+return survivorDNA
+}
 
+// console.log(survivorDNA)
+myFunc()
+const toStudy = survivorDNA;
 
-
-
-
-
+console.log(toStudy)
+// console.log(myFunc(newObj.willLikelySurvive))
 
 
