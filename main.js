@@ -80,30 +80,15 @@ console.log(newObj.willLikelySurvive())
 
 
 let survivorDNA = []
-const myFunc = () => {
+let counter = 1;
 // let survivorDNA = []
 // console.log(SurvivorDNA)
-for(let x = 0; x < 30; x++) {
-  // console.log(x)
-let newDNA = pAequorFactory(x, mockUpStrand())
-// console.log(newDNA)
-let yesOrNo = newDNA.willLikelySurvive()
-// console.log('Its a winner/loser: ', yesOrNo) 
-if (yesOrNo === true) {
-survivorDNA.push(newDNA)
+while (survivorDNA.length < 30) {
+  let newOrg = pAequorFactory(counter, mockUpStrand());
+   if (newOrg.willLikelySurvive()) {
+    survivorDNA.push(newOrg);
+  }
+  counter++;
 }
-// if (generating(generating.dna) === true) {
-//   survivorDNA.push(generating.dna)
-// }  
-}
-return survivorDNA
-}
-
-// console.log(survivorDNA)
-myFunc()
-const toStudy = survivorDNA;
-
-console.log(toStudy)
-// console.log(myFunc(newObj.willLikelySurvive))
-
+console.log(survivorDNA)
 
