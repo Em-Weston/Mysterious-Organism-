@@ -32,10 +32,8 @@ Project is created with:
 ---
 
 ## Project Status
-Still in progress. Once complete, I will consider fututer updates and changes. 
-* Create 30 instances of m.o. that can survive in their natural environment. Store these instances in an array for your team to study later.
-	I have created a function that stores m.o. DNA that can survive. I need to change it, so it stores 30 instances at a time. 
-	Ideally, also checking the length and returning the value, so I know it's 30. 
+Completed. Although, can wirte the code more simply. Can also add extra features. 
+* Create a new method, .compareDNA() to find the two most related instances of M.O.
 
 ---
 
