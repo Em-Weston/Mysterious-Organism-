@@ -48,13 +48,30 @@ return newObj.dna
          }
          let finalValue = (baseCount / array1.length) * 100
          return `Specimen ${newObj.specimenNum} and ${secondObj.specimenNum} have ${finalValue.toFixed()}% DNA in common.`
-    }
+    },
+    willLikelySurvive(arrayThis){
+      let count = 0;
+     for (let i = 0; i < arrayThis.length; i++){
+       let letter = arrayThis[i];
+       // console.log(letter)
+       // console.log(i, arrayOrThis[i])
+       if(arrayThis[i] === 'C' || arrayThis[i] === 'G') {
+         // console.log('We have a winner!')
+         count += 1 
+         // console.log(count)
+       } 
+       }
+       let finaltot = (count / 15) * 100;
+       finaltot = finaltot.toFixed()
+       // console.log(finaltot)
+       return finaltot >= 60 
+     }
   }
 };
 
 const newObj = pAequorFactory(1, mockUpStrand())
 console.log(newObj)
-
+console.log(newObj.willLikelySurvive(newObj.dna))
 
 // function compareDNA (array1, array2)  {
 //     let baseCount = 0;
