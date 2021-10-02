@@ -35,12 +35,46 @@ newObj.dna[num] = replacement
 // console.log(newObj.dna[num])
 // console.log(replacement)
 return newObj.dna
+    },
+    compareDNA (array1, array2)  {
+        let baseCount = 0;
+         for(var i = 0; i < array1.length; i++){
+          //  console.log(array1[i])
+          //  console.log(array2[i])
+           if (array1[i] === array2[i]) {
+             baseCount++ 
+           } 
+           console.log(baseCount)
+         }
+         let finalValue = (baseCount / array1.length) * 100
+         return `Specimen ${newObj.specimenNum} and ${secondObj.specimenNum} have ${finalValue.toFixed()}% DNA in common.`
     }
   }
 };
 
 const newObj = pAequorFactory(1, mockUpStrand())
 console.log(newObj)
+
+
+// function compareDNA (array1, array2)  {
+//     let baseCount = 0;
+//      for(var i = 0; i < array1.length; i++){
+//       //  console.log(array1[i])
+//       //  console.log(array2[i])
+//        if (array1[i] === array2[i]) {
+//          baseCount++ 
+//        } 
+//        console.log(baseCount)
+//      }
+//      let finalValue = (baseCount / array1.length) * 100
+//      return `Specimen ${newObj.specimenNum} and ${secondObj.specimenNum} have ${finalValue.toFixed()}% DNA in common.`
+// }
+// console.log(compareDNA(newObj.dna, secondObj.dna))
+
+
+console.log(newObj.compareDNA(newObj.dna, secondObj.dna))
+
+
 
 
 
